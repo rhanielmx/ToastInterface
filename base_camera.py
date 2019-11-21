@@ -101,4 +101,8 @@ class BaseCamera(object):
                 frames_iterator.close()
                 print('Stopping camera thread due to inactivity.')
                 break
+            # if BaseCamera.threadStop==True:
+            #     frames_iterator.close()
+            #     frames_iterator = cls.frames()
+            #     print('New video starting')
         BaseCamera.thread = None

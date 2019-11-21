@@ -8,21 +8,22 @@
   <!-- Optional CSS -->
   <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/player.css') }}">
   <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-  
+  <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
+ 
   <title>Video Streaming Demonstration</title>
 </head>
 <body>
   <div class="container">
-    <div class="player" wqcontrols>
-      <img class="player__video viewer" src="{{url_for('video_feed')}}"></video>
+    <div id="player" class="player" wqcontrols>
+      <img id="video" class="player__video viewer" src="{{url_for('video_feed', source_num=1)}}">
     </div>
 
-    <button class="button green">Ação 1</button>
-    <button class="button red">Ação 2</button>
+    <button class="button green" onclick=setVideoSource(2)>Ação 1</button>
+    <button class="button red"  onclick=setVideoSource(1)>Ação 2</button>
   </div>
 
   <!-- Optional JavaScript -->
-  <script src="{{ url_for('static', filename='js/styles.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/player.js') }}"></script>
   
 </body>
 </html>

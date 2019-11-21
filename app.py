@@ -22,20 +22,24 @@ def index():
     return render_template('index.html')
 
 
-def gen(camera):
+def gen(camera, stop=False):
     """Video streaming generator function."""
-    while True:
+    while True and not stop:
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
+@app.route('/video_feed/<int:source_num>')
+def video_feed(source_num):
+    if source_num == 1:
+        video_source = 'video.mp4'
+    elif source_num == 2:
+        video_source = 'video.avi'
 
-@app.route('/video_feed')
-def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
+    return Response(gen(Camera(video_source=video_source)),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', threaded=True)
+    app.run(host='0.0.0.0', debug=True, threaded=True)
