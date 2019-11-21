@@ -17,7 +17,7 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
-        camera = cv2.VideoCapture('react.mp4')
+        camera = cv2.VideoCapture('video.mp4')
         if not camera.isOpened():
             raise RuntimeError('Could not start camera.')
 

@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   <!-- Optional CSS -->
-  <link rel="stylesheet" href="./player.css">
-  <link rel="stylesheet" href="./styles.css">
-
+  <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/player.css') }}">
+  <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+  
   <title>Video Streaming Demonstration</title>
 </head>
 <body>
   <div class="container">
     <div class="player" wqcontrols>
-      <video class="player__video viewer" src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
+      <img class="player__video viewer" src="{{url_for('video_feed')}}"></video>
     </div>
 
     <button class="button green">Ação 1</button>
@@ -22,7 +22,7 @@
   </div>
 
   <!-- Optional JavaScript -->
-  <script src="./player.js"></script>
+  <script src="{{ url_for('static', filename='js/styles.js') }}"></script>
   
 </body>
 </html>
