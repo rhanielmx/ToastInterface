@@ -2,11 +2,12 @@ import os
 import cv2
 from base_camera import BaseCamera
 
-
 class Camera(BaseCamera):
     video_source = 0
 
-    def __init__(self):
+    def __init__(self, video_source='video.mkv'):
+        # BaseCamera.thread=None
+        Camera.set_video_source(video_source)
         if os.environ.get('OPENCV_CAMERA_SOURCE'):
             Camera.set_video_source(int(os.environ['OPENCV_CAMERA_SOURCE']))
         super(Camera, self).__init__()
@@ -17,7 +18,7 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
-        camera = cv2.VideoCapture('video.mp4')
+        camera = cv2.VideoCapture(Camera.video_source)
         if not camera.isOpened():
             raise RuntimeError('Could not start camera.')
 
