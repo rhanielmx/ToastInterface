@@ -82,7 +82,7 @@ def contorno2(img, alfa):
                 box[:,0] = box[:,0] + 100
                 
                 font = cv2.FONT_HERSHEY_SIMPLEX
-                pos = ( box[0][0], box[0][1] ) 
+                pos = ( box[0][0], box[0][1] )
                 cv2.putText(img,str(ang),pos, font, 0.8,(0,0,255),2,cv2.LINE_AA)
 
                 img = cv2.drawContours(img,[box],-1,(0,255,200),2)

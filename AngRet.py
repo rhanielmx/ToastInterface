@@ -9,8 +9,11 @@ alfa = 0 # alfa é o limiar de angulo para que apareça um contorno
 
 cap = cv2.VideoCapture("fundo_preto_torrada_branca.avi")
 
+count = 0
+
 while True:
     ret, frame = cap.read()
+    count = count + 1
     if(ret):
         frame = contorno2(frame,alfa)
         cv2.imshow('frame',frame)

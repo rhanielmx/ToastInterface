@@ -1,55 +1,28 @@
-# import imutils
-# import cv2
-#
-# cap = cv2.VideoCapture('video_pre_procesado.avi')
-# count = 0
-#
-# hog = cv2.HOGDescriptor()
-# hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
-#
-# x = 300
-# y = 8
-
-#
-# def show_video(contours):
-#     while cap.isOpened():
-#         ret, frame = cap.read()
-#         img = imutils.resize(frame, width=400)
-#
-#         # print(count)
-#         # if count > 300 and count < 500:
-#         #     cv2.rectangle(img, (0 + x, 2 + y), (40 + x, 26 + y), (0, 0, 255), 2)
-#
-#         for contour in contours:
-#             cv2.drawContours(frame, contour, -1, (0, 255, 0), 3)
-#
-#         cv2.rectangle(img, (295, 0), (346, 300), (0, 255, 0), 2)
-#
-#         cv2.imshow('Image', img)
-#         count = count + 1
-#         if cv2.waitKey(10) & 0xFF == ord('q'):
-#             break
-#
-#     cap.release()
-#     cv2.destroyAllWindows()
-
-
 import cv2
+import numpy as np
+import math
+from func import contorno
+from func import angTor
+from func import contorno2
+from func import angTor2
 
-cap = cv2.VideoCapture('video_pre_procesado.avi')
+alfa = 4  # alfa é o limiar de angulo para que apareça um contorno
+
+cap = cv2.VideoCapture("fundo_preto_torrada_branca.avi")
+cap_original = cv2.VideoCapture('video_original.avi')
 
 
-def show_video(contours):
+def show_original_image():
     while True:
-        _, frame = cap.read()
+        ret, frame = cap.read()
+        _, frame_original = cap_original.read()
+        cv2.rectangle(frame_original, (50, 0), (200, 700), (0, 255, 0), 2)
 
-        for contour in contours:
-            cv2.drawContours(frame, contour, -1, (0, 255, 0), 3)
-
-        cv2.imshow("Frame", frame)
-        key = cv2.waitKey(1)
-        if key == 27:
+        if (ret):
+            frame = contorno2(frame_original, alfa)
+            cv2.imshow('frame', frame)
+        if (cv2.waitKey(30) != -1):  # aperta ESC e a janela fecha
             break
-
     cap.release()
     cv2.destroyAllWindows()
+show_original_image()
