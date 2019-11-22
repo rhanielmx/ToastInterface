@@ -1,18 +1,10 @@
 import cv2
-import numpy as np
-import math
-from func import contorno
-from func import angTor
 from func import contorno2
-from func import angTor2
-
-alfa = 4  # alfa é o limiar de angulo para que apareça um contorno
-
 cap = cv2.VideoCapture("fundo_preto_torrada_branca.avi")
 cap_original = cv2.VideoCapture('video_original.avi')
 
 
-def show_original_image():
+def show_original_video(alfa):
     while True:
         ret, frame = cap.read()
         _, frame_original = cap_original.read()
@@ -25,4 +17,3 @@ def show_original_image():
             break
     cap.release()
     cv2.destroyAllWindows()
-show_original_image()
