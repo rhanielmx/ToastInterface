@@ -63,7 +63,10 @@ def contorno2(img, alfa):
     imgG = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     imgR = imgG[:,xe:xd:1]
     ret, thresh = cv2.threshold(imgR, 140, 255, 0)
-    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    try:
+        _, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    except ValueError:
+        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     for i in range(len(contours)):
         rect = cv2.minAreaRect(contours[i])

@@ -1,11 +1,12 @@
 import os
 import cv2
 from base_camera import BaseCamera
+from func import contorno2
 
 class Camera(BaseCamera):
     video_source = 0
 
-    def __init__(self, video_source='video.mkv'):
+    def __init__(self, video_source='fundo_preto_torrada_branca.avi'):
         # BaseCamera.thread=None
         Camera.set_video_source(video_source)
         if os.environ.get('OPENCV_CAMERA_SOURCE'):
@@ -18,6 +19,8 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
+        alfa = 0 # alfa é o limiar de angulo para que apareça um contorno
+        count = 0
         camera = cv2.VideoCapture(Camera.video_source)
         if not camera.isOpened():
             raise RuntimeError('Could not start camera.')
@@ -25,6 +28,8 @@ class Camera(BaseCamera):
         while True:
             # read current frame
             _, img = camera.read()
+            img = contorno2(img, alfa)
+            count+=1
             # encode as a jpeg image and return it
             if img is None:
                 break

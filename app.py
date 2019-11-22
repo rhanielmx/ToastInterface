@@ -23,9 +23,10 @@ def index():
     return render_template('index.html')
 
 
-def gen(camera, stop=False):
-    """Video streaming generator function."""
-    while True and not stop:
+def gen(camera):
+    """Video streaming generator function.""" 
+
+    while True:
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
@@ -33,7 +34,7 @@ def gen(camera, stop=False):
 @app.route('/video_feed/<int:source_num>')
 def video_feed(source_num):
     if source_num == 1:
-        video_source = 'video.mp4'
+        video_source = 'fundo_preto_torrada_branca.avi'
     elif source_num == 2:
         video_source = 'video.avi'
 
