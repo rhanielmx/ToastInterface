@@ -14,12 +14,11 @@
 </head>
 <body>
   <div class="container">
-    <div id="player" class="player" wqcontrols>
-      <img id="video" class="player__video viewer" src="{{url_for('video_feed', source_num=1)}}">
+    <div id="player" class="player">
+      <img id="video" class="player__video viewer" src="{{url_for('static', filename='torrada.jpg')}}">
     </div>
 
-    <button class="button green" onclick=setVideoSource(2)>Ação 1</button>
-    <button class="button red"  onclick=setVideoSource(1)>Ação 2</button>
+    <button class="button green" onclick=setVideoSource(2)>Iniciar Vídeo</button>
   </div>
 
   <!-- Optional JavaScript -->

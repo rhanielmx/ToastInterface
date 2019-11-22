@@ -34,12 +34,12 @@ def gen(camera):
 @app.route('/video_feed/<int:source_num>')
 def video_feed(source_num):
     if source_num == 1:
-        video_source = 'fundo_preto_torrada_branca.avi'
+        video_source = 'video_original.avi'
     elif source_num == 2:
-        video_source = 'video.avi'
+        video_source = 'fundo_preto_torrada_branca.avi'
 
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera(video_source=video_source)),
+    return Response(gen(Camera(video_source='video_original.avi')),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 

@@ -6,7 +6,7 @@ from func import contorno2
 class Camera(BaseCamera):
     video_source = 0
 
-    def __init__(self, video_source='fundo_preto_torrada_branca.avi'):
+    def __init__(self, video_source='video_original.avi'):
         # BaseCamera.thread=None
         Camera.set_video_source(video_source)
         if os.environ.get('OPENCV_CAMERA_SOURCE'):
