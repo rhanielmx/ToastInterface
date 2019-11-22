@@ -9,7 +9,6 @@ from flask import Flask, render_template, Response
 # else:
 #     from camera import Camera
 from camera_opencv import Camera
-from process_video import show_original_video
 
 # Raspberry Pi camera module (requires picamera package)
 # from camera_pi import Camera

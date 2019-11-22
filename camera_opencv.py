@@ -19,18 +19,18 @@ class Camera(BaseCamera):
 
     @staticmethod
     def frames():
-        alfa = 0 # alfa é o limiar de angulo para que apareça um contorno
+        alfa = 5 # alfa é o limiar de angulo para que apareça um contorno
         count = 0
         camera = cv2.VideoCapture(Camera.video_source)
         if not camera.isOpened():
             raise RuntimeError('Could not start camera.')
 
         while True:
-            # read current frame
-            _, img = camera.read()
-            img = contorno2(img, alfa)
-            count+=1
-            # encode as a jpeg image and return it
-            if img is None:
+            ret, frame = camera.read()
+            _, frame_original = camera.read()
+            img = contorno2(frame, frame_original, alfa)
+            cv2.rectangle(img, (50, 0), (300, 720), (0, 255, 0), 2)
+            cv2.imshow('frame', img)
+            if (cv2.waitKey(30) != -1):  # aperta ESC e a janela fecha
                 break
             yield cv2.imencode('.jpg', img)[1].tobytes()

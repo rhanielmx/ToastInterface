@@ -8,8 +8,7 @@ def show_original_video(alfa):
     while True:
         ret, frame = cap.read()
         _, frame_original = cap_original.read()
-        cv2.rectangle(frame_original, (50, 0), (200, 700), (0, 255, 0), 2)
-
+        cv2.rectangle(frame_original, (50, 0), (300, 670), (0, 255, 0), 2)
         if (ret):
             frame = contorno2(frame_original, alfa)
             cv2.imshow('frame', frame)
@@ -17,3 +16,5 @@ def show_original_video(alfa):
             break
     cap.release()
     cv2.destroyAllWindows()
+
+show_original_video(5)
