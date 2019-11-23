@@ -1,19 +1,25 @@
-html, body {
-	height: 100%;
+html {
 	margin: 0;
-	background: #f8f8f8;
+	background: #fefefe;
+}
+
+body {
+	margin: 0;
+	margin-top: 5%;
+	margin-left: 15%;
+	margin-right: 15%;
 }
 
 .container {
-	width: 50%;
-	margin: auto;
-	margin-top: 100px;
+	border-radius: 15px;
+	box-shadow: 3px 3px 27px 7px rgba(0,0,0,0.19);
 }
 
-.button {
+.play {
 	text-transform: uppercase;
 	outline: 0;
 	width: 100%;
+	height: 5rem;
 	border: 0;
 	padding: 15px;
 	color: #FFFFFF;
@@ -21,22 +27,10 @@ html, body {
 	-webkit-transition: all 0.3 ease;
 	transition: all 0.3 ease;
 	cursor: pointer;
-	margin-top: 2em;
-	box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.418);
-}
-
-.green {
+	border-radius: 0px 0px 15px 15px;
 	background: #4CAF50;
 }
 
-.green:hover, .button:active,.button:focus {
+.play:hover, .play:active,.play:focus {
 	background: #43A047;
-}
-
-.red {
-	background: rgb(214, 52, 52);
-}
-
-.red:hover, .button:active,.button:focus {
-	background: rgb(194, 38, 38);
 }
