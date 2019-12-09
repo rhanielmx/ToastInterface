@@ -35,20 +35,24 @@ body {
 	background: #43A047;
 }
 
-.info {
+.flex {
 	margin-top: 5%;
-	width: 100%;
 	height: 5rem;
 	border: 0;
 	padding: 15px;
 	color: #FFFFFF;	
 	text-transform: uppercase;
-	background: #43A047;
-
+	background: #4CAF50;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .info-item {
+	flex: 1;
 	height: 33%;
 	line-height: 33%;
-	vertical-align: middle 
+	font-size: 100%;
+	padding-left: 5%;
 }
